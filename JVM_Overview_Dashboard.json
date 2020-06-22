@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": 3066,
   "graphTooltip": 0,
-  "iteration": 1592855942403,
+  "iteration": 1592856641670,
   "links": [],
   "panels": [
     {
@@ -504,6 +504,31 @@
   "templating": {
     "list": [
       {
+        "allValue": null,
+        "current": {
+          "text": "ems_10.1.1.185",
+          "value": "ems_10.1.1.185"
+        },
+        "datasource": "prom",
+        "definition": "label_values(jvm_info,job)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "JOB_NAME",
+        "multi": false,
+        "name": "JOB_NAME",
+        "options": [],
+        "query": "label_values(jvm_info,job)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
         "allValue": "",
         "current": {
           "text": "10.1.1.185",
@@ -520,32 +545,6 @@
         "query": "label_values(jvm_info{job=\"$JOB_NAME\"},instance)",
         "refresh": 2,
         "regex": "/([^:]*).*/",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "tags": [],
-          "text": "ems_10.1.1.185",
-          "value": "ems_10.1.1.185"
-        },
-        "datasource": "prom",
-        "definition": "label_values(jvm_info,job)",
-        "hide": 0,
-        "includeAll": false,
-        "label": "JOB_NAME",
-        "multi": false,
-        "name": "JOB_NAME",
-        "options": [],
-        "query": "label_values(jvm_info,job)",
-        "refresh": 2,
-        "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
@@ -588,5 +587,5 @@
   "timezone": "",
   "title": "JVM overview  Dashboard",
   "uid": "ytWW5dfWz",
-  "version": 11
+  "version": 12
 }
