@@ -15,12 +15,12 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 14,
-  "iteration": 1576828437105,
+  "iteration": 1592844413920,
   "links": [],
   "panels": [
     {
-      "content": "\n<img alt=\"affirmednetworks\" class=\"center\" src=\"https://www.affirmednetworks.com/wp-content/uploads/2019/05/affirmed-logo-side-tag-transform-100.png\"></img>\n\n\n\n",
+      "content": "\n<img alt=\"affirmednetworks\" style=\"display:block;margin:auto;\" src=\"https://www.affirmednetworks.com/wp-content/uploads/2019/05/affirmed-logo-side-tag-transform-100.png\"></img>\n\n\n\n",
+      "datasource": null,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -68,7 +68,7 @@
       "strokeWidth": 1,
       "targets": [
         {
-          "expr": "resource_info{instance=\"$IP\"}",
+          "expr": "resource_info{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{types}}",
@@ -118,7 +118,7 @@
       "strokeWidth": 1,
       "targets": [
         {
-          "expr": "alarm_info{instance=\"$IP\"}",
+          "expr": "alarm_info{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{severity}}",
@@ -138,6 +138,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -158,7 +159,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -169,21 +172,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(affirmed_com_AcuitasFaultStats_TrapsProcessed{instance=~\"$EMS_IP\"}[5m])",
+          "expr": "irate(affirmed_com_AcuitasFaultStats_TrapsProcessed{instance=~\"$IP:.*\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "TrapsProcessed",
           "refId": "A"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasFaultStats_TrapsReceived{instance=~\"$EMS_IP\"}[5m])",
+          "expr": "irate(affirmed_com_AcuitasFaultStats_TrapsReceived{instance=~\"$IP:.*\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "TrapsReceived",
           "refId": "B"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasFaultStats_UnknownSourceTrapsReceived{instance=~\"$EMS_IP\"}[5m])",
+          "expr": "irate(affirmed_com_AcuitasFaultStats_UnknownSourceTrapsReceived{instance=~\"$IP:.*\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "UnknownSourceTrapsReceived",
@@ -238,6 +241,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -258,7 +262,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -269,7 +275,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "affirmed_com_AcuitasFaultStats_TrapSizeReceived{instance=~\"$EMS_IP\"}",
+          "expr": "affirmed_com_AcuitasFaultStats_TrapSizeReceived{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}}",
@@ -324,6 +330,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -344,7 +351,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -355,21 +364,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(affirmed_com_AcuitasPerfStats_MccStatsFilesImported{instance=~\"$EMS_IP\"}[5m])",
+          "expr": "irate(affirmed_com_AcuitasPerfStats_MccStatsFilesImported{instance=~\"$IP:.*\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MccStatsFilesImported",
           "refId": "A"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasPerfStats_MmeStatsFilesImported{instance=~\"$EMS_IP\"}[5m])",
+          "expr": "irate(affirmed_com_AcuitasPerfStats_MmeStatsFilesImported{instance=~\"$IP:.*\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MmeStatsFilesImported",
           "refId": "B"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasPerfStats_SsfStatsFilesImported{instance=~\"$EMS_IP\"}[5m])",
+          "expr": "irate(affirmed_com_AcuitasPerfStats_SsfStatsFilesImported{instance=~\"$IP:.*\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "SsfStatsFilesImported",
@@ -424,6 +433,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
@@ -444,7 +454,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 2,
       "points": false,
@@ -455,21 +467,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "affirmed_com_AcuitasPerfStats_MccStatsFileSizeImported{instance=\"$EMS_IP\"}",
+          "expr": "affirmed_com_AcuitasPerfStats_MccStatsFileSizeImported{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MccStatsFileSizeImported",
           "refId": "A"
         },
         {
-          "expr": "affirmed_com_AcuitasPerfStats_MmeStatsFileSizeImported{instance=\"$EMS_IP\"}",
+          "expr": "affirmed_com_AcuitasPerfStats_MmeStatsFileSizeImported{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MmeStatsFileSizeImported",
           "refId": "B"
         },
         {
-          "expr": "affirmed_com_AcuitasPerfStats_SsfStatsFileSizeImported{instance=\"$EMS_IP\"}",
+          "expr": "affirmed_com_AcuitasPerfStats_SsfStatsFileSizeImported{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "SsfStatsFileSizeImported",
@@ -535,44 +547,43 @@
             "mean"
           ],
           "defaults": {
+            "mappings": [],
             "max": 100,
-            "min": 0
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
           },
-          "mappings": [],
           "override": {},
-          "thresholds": [
-            {
-              "color": "green",
-              "index": 0,
-              "value": null
-            },
-            {
-              "color": "red",
-              "index": 1,
-              "value": 80
-            }
-          ],
           "values": false
         },
         "orientation": "vertical"
       },
+      "pluginVersion": "6.4.1",
       "targets": [
         {
-          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainTrapQueueCount{instance=~\"$EMS_IP\"}",
+          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainTrapQueueCount{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MainTrapQueueCount",
           "refId": "A"
         },
         {
-          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainEventQueueCount{instance=~\"$EMS_IP\"}",
+          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainEventQueueCount{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MainEventQueueCount",
           "refId": "B"
         },
         {
-          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainAlarmQueueCount{instance=~\"$EMS_IP\"}",
+          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainAlarmQueueCount{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MainAlarmQueueCount",
@@ -586,7 +597,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 20,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -594,23 +605,23 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "10.32.3.149:9399",
-          "value": "10.32.3.149:9399"
+          "tags": [],
+          "text": "ems_10.1.1.185",
+          "value": "ems_10.1.1.185"
         },
         "datasource": "prom",
-        "definition": "label_values(current_active_connections,instance)",
+        "definition": "label_values(current_active_connections,job)",
         "hide": 0,
         "includeAll": false,
-        "label": "IP",
+        "label": "JOB_NAME",
         "multi": false,
-        "name": "IP",
+        "name": "JOB_NAME",
         "options": [],
-        "query": "label_values(current_active_connections,instance)",
+        "query": "label_values(current_active_connections,job)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 1,
+        "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
         "tagsQuery": "",
@@ -620,24 +631,22 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "tags": [],
-          "text": "10.6.1.54:7676",
-          "value": "10.6.1.54:7676"
+          "text": "10.1.1.185",
+          "value": "10.1.1.185"
         },
         "datasource": "prom",
-        "definition": "label_values(jvm_info,instance)",
+        "definition": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
         "hide": 0,
         "includeAll": false,
-        "label": null,
+        "label": "IP",
         "multi": false,
-        "name": "EMS_IP",
+        "name": "IP",
         "options": [],
-        "query": "label_values(jvm_info,instance)",
+        "query": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
         "refresh": 2,
-        "regex": "",
+        "regex": "/([^:]*)*/",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
         "tagsQuery": "",
@@ -678,5 +687,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 39
+  "version": 10
 }
