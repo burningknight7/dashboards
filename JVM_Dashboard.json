@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": 3457,
   "graphTooltip": 0,
-  "id": 10,
-  "iteration": 1576828640893,
+  "iteration": 1592855297452,
   "links": [],
   "panels": [
     {
@@ -83,7 +82,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "java_lang_OperatingSystem_TotalPhysicalMemorySize{instance=~\"$instance\"}",
+          "expr": "java_lang_OperatingSystem_TotalPhysicalMemorySize{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "groupBy": [
             {
@@ -199,7 +198,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "java_lang_OperatingSystem_TotalPhysicalMemorySize{instance=~\"$instance\"}",
+          "expr": "java_lang_OperatingSystem_TotalPhysicalMemorySize{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "groupBy": [
             {
@@ -314,7 +313,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "java_lang_OperatingSystem_FreeSwapSpaceSize{instance=~\"$instance\"}",
+          "expr": "java_lang_OperatingSystem_FreeSwapSpaceSize{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "groupBy": [
             {
@@ -430,7 +429,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "java_lang_OperatingSystem_TotalSwapSpaceSize{instance=~\"$instance\"}",
+          "expr": "java_lang_OperatingSystem_TotalSwapSpaceSize{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "groupBy": [
             {
@@ -546,7 +545,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "avg_over_time(java_lang_OperatingSystem_SystemCpuLoad{instance=~\"$instance\"}[1m]) * 100",
+          "expr": "avg_over_time(java_lang_OperatingSystem_SystemCpuLoad{instance=~\"$IP:.*\"}[1m]) * 100",
           "format": "time_series",
           "groupBy": [
             {
@@ -663,7 +662,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "avg_over_time(java_lang_OperatingSystem_SystemCpuLoad{instance=~\"$instance\"}[5m]) * 100",
+          "expr": "avg_over_time(java_lang_OperatingSystem_SystemCpuLoad{instance=~\"$IP:.*\"}[5m]) * 100",
           "format": "time_series",
           "groupBy": [
             {
@@ -779,7 +778,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "java_lang_OperatingSystem_AvailableProcessors{instance=~\"$instance\"}",
+          "expr": "java_lang_OperatingSystem_AvailableProcessors{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "groupBy": [
             {
@@ -838,6 +837,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
@@ -858,7 +858,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -869,7 +871,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "java_lang_OperatingSystem_SystemCpuLoad{instance=~\"$instance\"} * 100",
+          "expr": "java_lang_OperatingSystem_SystemCpuLoad{instance=~\"$IP:.*\"} * 100",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "system",
@@ -878,7 +880,7 @@
         },
         {
           "dsType": "influxdb",
-          "expr": "java_lang_OperatingSystem_ProcessCpuLoad{instance=~\"$instance\"} * 100",
+          "expr": "java_lang_OperatingSystem_ProcessCpuLoad{instance=~\"$IP:.*\"} * 100",
           "format": "time_series",
           "groupBy": [
             {
@@ -966,6 +968,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
@@ -988,7 +991,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1000,7 +1005,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_memory_bytes_used{instance=~\"$instance\"}  / ignoring(area) group_left java_lang_OperatingSystem_TotalPhysicalMemorySize{instance=~\"$instance\"} *100",
+          "expr": "jvm_memory_bytes_used{instance=~\"$IP:.*\"}  / ignoring(area) group_left java_lang_OperatingSystem_TotalPhysicalMemorySize{instance=~\"$IP:.*\"} *100",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 5,
@@ -1058,6 +1063,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
@@ -1079,7 +1085,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1091,7 +1099,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "jvm_memory_pool_bytes_used{instance=~\"$instance\"}",
+          "expr": "jvm_memory_pool_bytes_used{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "groupBy": [
             {
@@ -1179,6 +1187,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
@@ -1199,7 +1208,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1210,7 +1221,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_threads_current{instance=~\"$instance\"}",
+          "expr": "jvm_threads_current{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 5,
           "legendFormat": "current",
@@ -1219,7 +1230,7 @@
           "step": 50
         },
         {
-          "expr": "jvm_threads_daemon{instance=~\"$instance\"}",
+          "expr": "jvm_threads_daemon{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "intervalFactor": 5,
           "legendFormat": "daemon",
@@ -1277,6 +1288,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
@@ -1297,7 +1309,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1308,7 +1322,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_classes_loaded{instance=~\"$instance\"}",
+          "expr": "jvm_classes_loaded{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 5,
@@ -1367,6 +1381,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 10,
@@ -1387,7 +1402,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1399,7 +1416,7 @@
       "targets": [
         {
           "dsType": "influxdb",
-          "expr": "java_lang_OperatingSystem_OpenFileDescriptorCount{instance=~\"$instance\"}",
+          "expr": "java_lang_OperatingSystem_OpenFileDescriptorCount{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "groupBy": [
             {
@@ -1487,6 +1504,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -1507,7 +1525,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1518,7 +1538,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(jvm_gc_collection_seconds_sum{instance=~\"$instance\"}[1m])",
+          "expr": "rate(jvm_gc_collection_seconds_sum{instance=~\"$IP:.*\"}[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 5,
@@ -1576,6 +1596,7 @@
       "dashes": false,
       "datasource": "prom",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -1596,7 +1617,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1607,7 +1630,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_gc_collection_seconds_count{instance=~\"$instance\"}",
+          "expr": "jvm_gc_collection_seconds_count{instance=~\"$IP:.*\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 5,
@@ -1661,7 +1684,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 18,
+  "schemaVersion": 20,
   "style": "dark",
   "tags": [
     "JVM",
@@ -1670,22 +1693,48 @@
   "templating": {
     "list": [
       {
-        "allValue": "",
+        "allValue": null,
         "current": {
-          "text": "10.32.3.149:7676",
-          "value": "10.32.3.149:7676"
+          "tags": [],
+          "text": "ems_10.1.1.185",
+          "value": "ems_10.1.1.185"
         },
         "datasource": "prom",
-        "definition": "label_values(jmx_exporter_build_info, instance)",
+        "definition": "label_values(jvm_info,job)",
         "hide": 0,
         "includeAll": false,
-        "label": "Instance",
+        "label": "JOB_NAME",
         "multi": false,
-        "name": "instance",
+        "name": "JOB_NAME",
         "options": [],
-        "query": "label_values(jmx_exporter_build_info, instance)",
-        "refresh": 1,
+        "query": "label_values(jvm_info,job)",
+        "refresh": 2,
         "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "",
+        "current": {
+          "text": "10.1.1.185",
+          "value": "10.1.1.185"
+        },
+        "datasource": "prom",
+        "definition": "label_values(jvm_info{job=\"$JOB_NAME\"},instance)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "IP",
+        "multi": false,
+        "name": "IP",
+        "options": [],
+        "query": "label_values(jvm_info{job=\"$JOB_NAME\"},instance)",
+        "refresh": 1,
+        "regex": "/([^:]*).*/",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
@@ -1728,5 +1777,5 @@
   "timezone": "",
   "title": "Java Management Extension Dashboard",
   "uid": "iSticOBWk",
-  "version": 15
+  "version": 12
 }
