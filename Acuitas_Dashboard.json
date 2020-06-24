@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1592844413920,
+  "iteration": 1593035204783,
   "links": [],
   "panels": [
     {
@@ -606,8 +606,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "ems_10.1.1.185",
-          "value": "ems_10.1.1.185"
+          "text": "emsha1",
+          "value": "emsha1"
         },
         "datasource": "prom",
         "definition": "label_values(current_active_connections,job)",
@@ -631,20 +631,20 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.1.1.185",
-          "value": "10.1.1.185"
+          "text": "10.32.4.177",
+          "value": "10.32.4.177"
         },
         "datasource": "prom",
-        "definition": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
-        "hide": 0,
+        "definition": "label_values(current_active_server{job=\"$JOB_NAME\"},master)",
+        "hide": 2,
         "includeAll": false,
         "label": "IP",
         "multi": false,
         "name": "IP",
         "options": [],
-        "query": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
+        "query": "label_values(current_active_server{job=\"$JOB_NAME\"},master)",
         "refresh": 2,
-        "regex": "/([^:]*)*/",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -656,7 +656,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -687,5 +687,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 10
+  "version": 11
 }
