@@ -9,13 +9,26 @@
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
         "type": "dashboard"
+      },
+      {
+        "datasource": "prom",
+        "enable": true,
+        "expr": "ALERTS{alertname=\"MasterDown\"}",
+        "hide": true,
+        "iconColor": "rgba(255, 96, 96, 1)",
+        "limit": 100,
+        "name": "Master Down",
+        "showIn": 0,
+        "tags": [],
+        "titleFormat": "Switchover",
+        "type": "tags"
       }
     ]
   },
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1593035204783,
+  "iteration": 1594907945686,
   "links": [],
   "panels": [
     {
@@ -146,6 +159,7 @@
         "y": 13
       },
       "id": 7,
+      "interval": "1m",
       "legend": {
         "avg": false,
         "current": false,
@@ -172,24 +186,24 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(affirmed_com_AcuitasFaultStats_TrapsProcessed{instance=~\"$IP:.*\"}[5m])",
+          "expr": "increase(affirmed_com_AcuitasFaultStats_TrapsProcessed{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "TrapsProcessed",
+          "legendFormat": "TrapsProcessed({{instance}})",
           "refId": "A"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasFaultStats_TrapsReceived{instance=~\"$IP:.*\"}[5m])",
+          "expr": "increase(affirmed_com_AcuitasFaultStats_TrapsReceived{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "TrapsReceived",
+          "legendFormat": "TrapsReceived({{instance}})",
           "refId": "B"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasFaultStats_UnknownSourceTrapsReceived{instance=~\"$IP:.*\"}[5m])",
+          "expr": "increase(affirmed_com_AcuitasFaultStats_UnknownSourceTrapsReceived{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "UnknownSourceTrapsReceived",
+          "legendFormat": "UnknownSourceTrapsReceived({{instance}})",
           "refId": "C"
         }
       ],
@@ -249,6 +263,7 @@
         "y": 13
       },
       "id": 8,
+      "interval": "1m",
       "legend": {
         "avg": false,
         "current": false,
@@ -275,7 +290,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "affirmed_com_AcuitasFaultStats_TrapSizeReceived{instance=~\"$IP:.*\"}",
+          "expr": "avg_over_time(affirmed_com_AcuitasFaultStats_TrapSizeReceived{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}}",
@@ -338,6 +353,7 @@
         "y": 21
       },
       "id": 10,
+      "interval": "5m",
       "legend": {
         "avg": false,
         "current": false,
@@ -364,24 +380,24 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(affirmed_com_AcuitasPerfStats_MccStatsFilesImported{instance=~\"$IP:.*\"}[5m])",
+          "expr": "increase(affirmed_com_AcuitasPerfStats_MccStatsFilesImported{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "MccStatsFilesImported",
+          "legendFormat": "MccStatsFilesImported({{instance}})",
           "refId": "A"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasPerfStats_MmeStatsFilesImported{instance=~\"$IP:.*\"}[5m])",
+          "expr": "increase(affirmed_com_AcuitasPerfStats_MmeStatsFilesImported{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "MmeStatsFilesImported",
+          "legendFormat": "MmeStatsFilesImported({{instance}})",
           "refId": "B"
         },
         {
-          "expr": "irate(affirmed_com_AcuitasPerfStats_SsfStatsFilesImported{instance=~\"$IP:.*\"}[5m])",
+          "expr": "increase(affirmed_com_AcuitasPerfStats_SsfStatsFilesImported{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "SsfStatsFilesImported",
+          "legendFormat": "SsfStatsFilesImported({{instance}})",
           "refId": "C"
         }
       ],
@@ -441,6 +457,7 @@
         "y": 21
       },
       "id": 12,
+      "interval": "5m",
       "legend": {
         "avg": false,
         "current": false,
@@ -467,24 +484,24 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "affirmed_com_AcuitasPerfStats_MccStatsFileSizeImported{instance=~\"$IP:.*\"}",
+          "expr": "avg_over_time(affirmed_com_AcuitasPerfStats_MccStatsFileSizeImported{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "MccStatsFileSizeImported",
+          "legendFormat": "MccStatsFileSizeImported({{instance}})",
           "refId": "A"
         },
         {
-          "expr": "affirmed_com_AcuitasPerfStats_MmeStatsFileSizeImported{instance=~\"$IP:.*\"}",
+          "expr": "avg_over_time(affirmed_com_AcuitasPerfStats_MmeStatsFileSizeImported{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "MmeStatsFileSizeImported",
+          "legendFormat": "MmeStatsFileSizeImported({{instance}})",
           "refId": "B"
         },
         {
-          "expr": "affirmed_com_AcuitasPerfStats_SsfStatsFileSizeImported{instance=~\"$IP:.*\"}",
+          "expr": "avg_over_time(affirmed_com_AcuitasPerfStats_SsfStatsFileSizeImported{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "SsfStatsFileSizeImported",
+          "legendFormat": "SsfStatsFileSizeImported({{instance}})",
           "refId": "C"
         }
       ],
@@ -569,21 +586,21 @@
       "pluginVersion": "6.4.1",
       "targets": [
         {
-          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainTrapQueueCount{instance=~\"$IP:.*\"}",
+          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainTrapQueueCount{job=\"$JOB_NAME\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MainTrapQueueCount",
           "refId": "A"
         },
         {
-          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainEventQueueCount{instance=~\"$IP:.*\"}",
+          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainEventQueueCount{job=\"$JOB_NAME\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MainEventQueueCount",
           "refId": "B"
         },
         {
-          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainAlarmQueueCount{instance=~\"$IP:.*\"}",
+          "expr": "affirmed_com_AcuitasFaultStats_DroppedMainAlarmQueueCount{job=\"$JOB_NAME\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MainAlarmQueueCount",
@@ -605,7 +622,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "emsha1",
           "value": "emsha1"
         },
@@ -635,16 +651,16 @@
           "value": "10.32.4.177"
         },
         "datasource": "prom",
-        "definition": "label_values(current_active_server{job=\"$JOB_NAME\"},master)",
+        "definition": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
         "hide": 2,
         "includeAll": false,
         "label": "IP",
         "multi": false,
         "name": "IP",
         "options": [],
-        "query": "label_values(current_active_server{job=\"$JOB_NAME\"},master)",
+        "query": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
         "refresh": 2,
-        "regex": "",
+        "regex": "/([^:]*).*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -656,7 +672,7 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -687,5 +703,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 11
+  "version": 12
 }
