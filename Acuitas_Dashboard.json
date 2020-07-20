@@ -13,7 +13,7 @@
       {
         "datasource": "prom",
         "enable": true,
-        "expr": "ALERTS{alertname=\"MasterDown\"}",
+        "expr": "ALERTS{alertname=\"MasterDown\",instance=~\"$IP.*\"}",
         "hide": true,
         "iconColor": "rgba(255, 96, 96, 1)",
         "limit": 100,
@@ -28,7 +28,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1594907945686,
+  "iteration": 1595254692495,
   "links": [],
   "panels": [
     {
@@ -145,7 +145,11 @@
       "valueName": "current"
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "TrapsProcessed(10.32.5.177:7676)": "green",
+        "TrapsReceived(10.32.5.177:7676)": "rgb(91, 126, 184)",
+        "UnknownSourceTrapsReceived(10.32.5.177:7676)": "yellow"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -180,7 +184,12 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "TrapsReceived(10.32.5.177:7676)",
+          "yaxis": 1
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -703,5 +712,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 12
+  "version": 13
 }
