@@ -28,7 +28,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1595254692495,
+  "iteration": 1595348759956,
   "links": [],
   "panels": [
     {
@@ -146,9 +146,9 @@
     },
     {
       "aliasColors": {
-        "TrapsProcessed(10.32.5.177:7676)": "green",
-        "TrapsReceived(10.32.5.177:7676)": "rgb(91, 126, 184)",
-        "UnknownSourceTrapsReceived(10.32.5.177:7676)": "yellow"
+        "TrapsProcessed(10.32.5.177:7676)": "rgb(144, 240, 131)",
+        "TrapsReceived(10.32.5.177:7676)": "rgb(101, 138, 199)",
+        "UnknownSourceTrapsReceived(10.32.5.177:7676)": "rgb(242, 224, 109)"
       },
       "bars": false,
       "dashLength": 10,
@@ -681,7 +681,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -712,5 +712,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 13
+  "version": 14
 }
