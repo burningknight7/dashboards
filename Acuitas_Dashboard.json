@@ -28,7 +28,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1595348759956,
+  "iteration": 1595943736993,
   "links": [],
   "panels": [
     {
@@ -83,6 +83,7 @@
         {
           "expr": "resource_info{instance=~\"$IP:.*\"}",
           "format": "time_series",
+          "instant": true,
           "intervalFactor": 1,
           "legendFormat": "{{types}}",
           "refId": "A"
@@ -90,7 +91,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Managed Device Types",
+      "title": "Registered Device Types",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -133,6 +134,7 @@
         {
           "expr": "alarm_info{instance=~\"$IP:.*\"}",
           "format": "time_series",
+          "instant": true,
           "intervalFactor": 1,
           "legendFormat": "{{severity}}",
           "refId": "A"
@@ -597,6 +599,7 @@
         {
           "expr": "affirmed_com_AcuitasFaultStats_DroppedMainTrapQueueCount{job=\"$JOB_NAME\"}",
           "format": "time_series",
+          "instant": true,
           "intervalFactor": 1,
           "legendFormat": "MainTrapQueueCount",
           "refId": "A"
@@ -604,6 +607,7 @@
         {
           "expr": "affirmed_com_AcuitasFaultStats_DroppedMainEventQueueCount{job=\"$JOB_NAME\"}",
           "format": "time_series",
+          "instant": true,
           "intervalFactor": 1,
           "legendFormat": "MainEventQueueCount",
           "refId": "B"
@@ -611,6 +615,7 @@
         {
           "expr": "affirmed_com_AcuitasFaultStats_DroppedMainAlarmQueueCount{job=\"$JOB_NAME\"}",
           "format": "time_series",
+          "instant": true,
           "intervalFactor": 1,
           "legendFormat": "MainAlarmQueueCount",
           "refId": "C"
@@ -618,7 +623,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Dropped Queue Count",
+      "title": "Alarm Overflow Count",
       "type": "bargauge"
     }
   ],
@@ -631,8 +636,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "emsha1",
-          "value": "emsha1"
+          "text": "emsqaha",
+          "value": "emsqaha"
         },
         "datasource": "prom",
         "definition": "label_values(current_active_connections,job)",
@@ -656,8 +661,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.32.4.177",
-          "value": "10.32.4.177"
+          "selected": true,
+          "text": "10.32.1.33",
+          "value": "10.32.1.33"
         },
         "datasource": "prom",
         "definition": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
@@ -681,7 +687,7 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-30d",
     "to": "now"
   },
   "timepicker": {
@@ -712,5 +718,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 14
+  "version": 15
 }
