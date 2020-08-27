@@ -28,7 +28,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1595943736993,
+  "iteration": 1598559164231,
   "links": [],
   "panels": [
     {
@@ -391,21 +391,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(affirmed_com_AcuitasPerfStats_MccStatsFilesImported{job=\"$JOB_NAME\"}[$__interval])",
+          "expr": "increase(affirmed_com_AcuitasPerfStats_MccStatsFilesImported{job=\"$JOB_NAME\"}[$__interval:$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MccStatsFilesImported({{instance}})",
           "refId": "A"
         },
         {
-          "expr": "increase(affirmed_com_AcuitasPerfStats_MmeStatsFilesImported{job=\"$JOB_NAME\"}[$__interval])",
+          "expr": "increase(affirmed_com_AcuitasPerfStats_MmeStatsFilesImported{job=\"$JOB_NAME\"}[$__interval:$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "MmeStatsFilesImported({{instance}})",
           "refId": "B"
         },
         {
-          "expr": "increase(affirmed_com_AcuitasPerfStats_SsfStatsFilesImported{job=\"$JOB_NAME\"}[$__interval])",
+          "expr": "increase(affirmed_com_AcuitasPerfStats_SsfStatsFilesImported{job=\"$JOB_NAME\"}[$__interval:$__interval])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "SsfStatsFilesImported({{instance}})",
@@ -636,8 +636,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "emsqaha",
-          "value": "emsqaha"
+          "text": "emsdev_tanay",
+          "value": "emsdev_tanay"
         },
         "datasource": "prom",
         "definition": "label_values(current_active_connections,job)",
@@ -661,9 +661,8 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "10.32.1.33",
-          "value": "10.32.1.33"
+          "text": "10.1.1.185",
+          "value": "10.1.1.185"
         },
         "datasource": "prom",
         "definition": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
@@ -687,7 +686,7 @@
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
@@ -718,5 +717,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 15
+  "version": 16
 }
