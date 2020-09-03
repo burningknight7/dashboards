@@ -28,7 +28,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1598559164231,
+  "iteration": 1599154814816,
   "links": [],
   "panels": [
     {
@@ -165,7 +165,7 @@
         "y": 13
       },
       "id": 7,
-      "interval": "1m",
+      "interval": "30s",
       "legend": {
         "avg": false,
         "current": false,
@@ -197,22 +197,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "increase(affirmed_com_AcuitasFaultStats_TrapsProcessed{job=\"$JOB_NAME\"}[$__interval])",
+          "expr": "avg_over_time(affirmed_com_AcuitasFaultStats_TrapsProcessed{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
+          "interval": "30s",
           "intervalFactor": 1,
           "legendFormat": "TrapsProcessed({{instance}})",
           "refId": "A"
         },
         {
-          "expr": "increase(affirmed_com_AcuitasFaultStats_TrapsReceived{job=\"$JOB_NAME\"}[$__interval])",
+          "expr": "avg_over_time(affirmed_com_AcuitasFaultStats_TrapsReceived{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
+          "interval": "30s",
           "intervalFactor": 1,
           "legendFormat": "TrapsReceived({{instance}})",
           "refId": "B"
         },
         {
-          "expr": "increase(affirmed_com_AcuitasFaultStats_UnknownSourceTrapsReceived{job=\"$JOB_NAME\"}[$__interval])",
+          "expr": "avg_over_time(affirmed_com_AcuitasFaultStats_UnknownSourceTrapsReceived{job=\"$JOB_NAME\"}[$__interval])",
           "format": "time_series",
+          "interval": "30s",
           "intervalFactor": 1,
           "legendFormat": "UnknownSourceTrapsReceived({{instance}})",
           "refId": "C"
@@ -274,7 +277,7 @@
         "y": 13
       },
       "id": 8,
-      "interval": "1m",
+      "interval": "",
       "legend": {
         "avg": false,
         "current": false,
@@ -301,7 +304,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg_over_time(affirmed_com_AcuitasFaultStats_TrapSizeReceived{job=\"$JOB_NAME\"}[$__interval])",
+          "expr": "affirmed_com_AcuitasFaultStats_TrapSizeReceived{job=\"$JOB_NAME\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}}",
@@ -537,7 +540,7 @@
       "yaxes": [
         {
           "decimals": null,
-          "format": "short",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -636,8 +639,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "emsdev_tanay",
-          "value": "emsdev_tanay"
+          "text": "emsqaha",
+          "value": "emsqaha"
         },
         "datasource": "prom",
         "definition": "label_values(current_active_connections,job)",
@@ -661,8 +664,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.1.1.185",
-          "value": "10.1.1.185"
+          "text": "10.32.1.33",
+          "value": "10.32.1.33"
         },
         "datasource": "prom",
         "definition": "label_values(current_active_connections{job=\"$JOB_NAME\"},instance)",
@@ -686,7 +689,7 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -717,5 +720,5 @@
   "timezone": "",
   "title": "Acuitas Dashboard",
   "uid": "VF1lJoBWz",
-  "version": 16
+  "version": 17
 }
