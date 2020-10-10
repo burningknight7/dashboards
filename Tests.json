@@ -1,0 +1,1502 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      },
+      {
+        "datasource": "prom",
+        "enable": true,
+        "expr": "ALERTS{alertname=\"MasterDown\",job=\"$job_name\"}",
+        "hide": true,
+        "iconColor": "rgba(255, 96, 96, 1)",
+        "limit": 100,
+        "name": "MasterDown",
+        "showIn": 0,
+        "step": "30s",
+        "tags": [],
+        "titleFormat": "switchover",
+        "type": "tags"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1602341274042,
+  "links": [],
+  "panels": [
+    {
+      "content": "\n<img alt=\"affirmednetworks\" style=\"display:block;margin:auto;\" src=\"https://www.affirmednetworks.com/wp-content/uploads/2019/05/affirmed-logo-side-tag-transform-100.png\"></img>\n\n\n\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 52,
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "type": "text"
+    },
+    {
+      "aliasColors": {
+        "Number of files imported in last 30s by Mcc resource : Cluster19": "green",
+        "Number of files imported in last 5m by Mcc resource : Cluster19": "rgb(147, 240, 116)"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 30,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_com_AcuitasPMStats_MccStatsFilesImportedByResource{job=\"$job_name\",key=\"$resource_ip\"} offset 30s [$interval:$interval])",
+          "legendFormat": "Number of files imported in last $interval by Mcc resource : $resource_name",
+          "refId": "A"
+        },
+        {
+          "expr": "increase(affirmed_com_AcuitasPMStats_MmeStatsFilesImportedByResource{job=\"$job_name\",key=\"$resource_ip\"} offset 30s [$interval:$interval])",
+          "legendFormat": "Number of files imported in last $interval by Mme resource : $resource_name",
+          "refId": "B"
+        },
+        {
+          "expr": "increase(affirmed_com_AcuitasPMStats_SsfStatsFilesImportedByResource{job=\"$job_name\",key=\"$resource_ip\"} offset 30s [$interval:$interval])",
+          "legendFormat": "Number of files imported in last $interval by Ssf resource : $resource_name",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Files imported by Resource",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 46,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum_over_time(affirmed_com_AcuitasPMStats_MccStatsFileSizeImported_Changed{instance=~\"$ip:.*\",key=\"$resource_ip\"}[$interval])",
+          "hide": false,
+          "legendFormat": "Total size of files imported in last $interval by Mcc resource : $resource_name",
+          "refId": "A"
+        },
+        {
+          "expr": "sum_over_time(affirmed_com_AcuitasPMStats_MmeStatsFileSizeImported_Changed{instance=~\"$ip:.*\",key=\"$resource_ip\"}[$interval])",
+          "legendFormat": "Total size of files imported in last $interval by Mme resource : $resource_name",
+          "refId": "B"
+        },
+        {
+          "expr": "sum_over_time(affirmed_com_AcuitasPMStats_SsfStatsFileSizeImported_Changed{instance=~\"$ip:.*\",key=\"$resource_ip\"}[$interval])",
+          "legendFormat": "Total size of files imported in last $interval by Mme resource : $resource_name",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Stats file size imported by Resource",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 34,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_AcuitasPMStats_MccStatsFilesImportedTotal{instance=~\"$ip:.*\"}[$interval:$interval])",
+          "legendFormat": "Number of Mcc files imported in last $interval by Server : $job_name",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Mcc files imported by Server",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "total file size received in last 2h": "semi-dark-orange",
+        "total file size received in last 2h for instance : 10.32.1.33:7676": "semi-dark-blue",
+        "total file size received in last 2h for instance : 10.32.2.33:7676": "semi-dark-orange",
+        "total size of Mcc files received in last 2h for Server IP : 10.32.1.33:7676": "light-blue",
+        "total size of Mcc files received in last 2h for Server IP : 10.32.2.33:7676": "semi-dark-orange",
+        "total size of tier 1 files received in last 2h for Server IP : 10.32.1.33:7676": "light-blue",
+        "total size of tier 1 files received in last 2h for Server IP : 10.32.2.33:7676": "semi-dark-orange"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "decimals": null,
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 10,
+      "interval": "$interval",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.4.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum_over_time(affirmed_AcuitasPMStats_MccStatsFileSizeImportedTotal{instance=~\"$ip:.*\"}[$interval])",
+          "legendFormat": "Total size of Mcc files imported in last $interval for Server : $job_name",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Mcc File Size Imported by Server",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "decbytes",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 37
+      },
+      "id": 38,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_AcuitasPMStats_SsfStatsFilesImportedTotal{instance=~\"$ip:.*\"}[$interval:$interval])",
+          "legendFormat": "Number of Ssf files imported in last $interval for Server : $job_name",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Ssf files imported by Server",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 37
+      },
+      "id": 40,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_AcuitasPMStats_MmeStatsFilesImportedTotal{instance=~\"$ip:.*\"}[$interval:$interval])",
+          "legendFormat": "Number of Mme files imported in last $interval for Server : $job_name",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Mme Files imported by Server",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Total size of Ssf files imported in last 2h for Server IP : 10.32.1.33:7676": "light-blue",
+        "Total size of Ssf files imported in last 2h for Server IP : 10.32.2.33:7676": "semi-dark-orange",
+        "Total size of Ssf files imported in last 2h for instance : 10.32.1.33:7676": "light-blue",
+        "Total size of Ssf files imported in last 2h for instance : 10.32.2.33:7676": "semi-dark-orange",
+        "Total size of Tier 2 files imported in last 2h for Server IP : 10.32.1.33:7676": "light-blue",
+        "Total size of Tier 2 files imported in last 2h for Server IP : 10.32.2.33:7676": "semi-dark-orange"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "id": 24,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum_over_time(affirmed_AcuitasPMStats_SsfStatsFileSizeImportedTotal{instance=~\"$ip:.*\"}[$interval])",
+          "legendFormat": "Total size of Ssf files imported in last $interval for Server IP : {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Ssf File Size Imported by Server",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Total size of Mme files imported in the last 2h for Server IP : 10.32.1.33:7676": "light-blue",
+        "Total size of Mme files imported in the last 2h for Server IP : 10.32.2.33:7676": "semi-dark-orange",
+        "Total size of Mme files imported in the last 2h for instance : 10.32.1.33:7676": "light-blue",
+        "Total size of Mme files imported in the last 2h for instance : 10.32.2.33:7676": "semi-dark-orange",
+        "Total size of Tier 3 files imported in the last 2h for Server IP : 10.32.1.33:7676": "light-blue",
+        "Total size of Tier 3 files imported in the last 2h for Server IP : 10.32.2.33:7676": "semi-dark-orange"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "description": "The actual values are lagging 30s behind their real timestamps",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 47
+      },
+      "id": 28,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum_over_time(affirmed_AcuitasPMStats_MmeStatsFileSizeImportedTotal{instance=~\"$ip:.*\"}[$interval])",
+          "legendFormat": "Size of Mme files imported in the last $interval for Server : $job_name",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total Mme File Size Imported",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Number of Main Alarms Dropped in last 2h for Server IP : 10.32.1.33:7676": "dark-red",
+        "Number of Main Alarms Dropped in last 2h for Server IP : 10.32.2.33:7676": "light-red",
+        "Number of Main Alarms Dropped in last 2h for instance : 10.32.2.33:7676": "light-red",
+        "Number of Main Alarms Dropped in last 30s for instance : 10.32.2.33:7676": "rgb(242, 99, 108)",
+        "Number of Main Alarms Dropped in last 5m for instance : 10.1.1.185:7676": "yellow",
+        "Number of Main Alarms Dropped in last 5m for instance : 10.32.2.33:7676": "rgb(242, 116, 124)"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 0,
+        "y": 58
+      },
+      "id": 16,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_com_AcuitasFaultStats_DroppedMainAlarmQueueCount{job=\"$job_name\"}[$interval:$interval])",
+          "instant": false,
+          "legendFormat": "Number of main Alarms Dropped in last $interval for Server : {{job}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Main Alarms Dropped",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Main Events dropped in last 2h for Server IP : 10.32.1.33:7676": "dark-red",
+        "Main Events dropped in last 2h for Server IP : 10.32.2.33:7676": "light-red",
+        "Main Events dropped in last 2h for instance: 10.32.2.33:7676": "light-red",
+        "Main Events dropped in last 5m for instance: 10.1.1.185:7676": "semi-dark-yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 8,
+        "y": 58
+      },
+      "id": 19,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_com_AcuitasFaultStats_DroppedMainEventQueueCount{job=\"$job_name\"}[$interval:$interval])",
+          "legendFormat": "Number of main Events dropped in last $interval for Server : {{job}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Main Events Dropped",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Main Errors Dropped in last 2h for instance : 10.32.2.33:7676": "light-red",
+        "Main Errors Dropped in last 2h for server : 10.32.2.33:7676": "light-red",
+        "Main Traps Dropped in last 2h for Server IP: 10.32.1.33:7676": "dark-red",
+        "Main Traps Dropped in last 2h for Server IP: 10.32.2.33:7676": "light-red",
+        "Main Traps Dropped in last 2h for instance : 10.32.2.33:7676": "light-red",
+        "Main Traps Dropped in last 5m for instance : 10.1.1.185:7676": "light-yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 16,
+        "y": 58
+      },
+      "id": 20,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_com_AcuitasFaultStats_DroppedMainTrapQueueCount{job=\"$job_name\"}[$interval:$interval])",
+          "legendFormat": "Number of main traps dropped in last $interval for Server : {{job}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Main Traps Dropped",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 70
+      },
+      "id": 12,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "increase(affirmed_com_AcuitasFaultStats_TrapsProcessed{job=\"$job_name\"}[$interval:$interval])",
+          "legendFormat": "traps processed in last $interval for Server : {{job}}",
+          "refId": "A"
+        },
+        {
+          "expr": "increase(affirmed_com_AcuitasFaultStats_TrapsReceived{job=\"$job_name\"}[$interval:$interval])",
+          "legendFormat": "total traps received in last $interval for Server : {{job}}",
+          "refId": "B"
+        },
+        {
+          "expr": "increase(affirmed_com_AcuitasFaultStats_UnknownSourceTrapsReceived{job=\"$job_name\"}[$interval:$interval])",
+          "legendFormat": "traps received from unknown sources in last $interval for Server : {{job}}",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Traps Processing",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Total size of error files received in the last 2h for Server IP : 10.32.2.33:7676": "light-blue",
+        "Total size of traps received in the last 2h for Server IP : 10.32.1.33:7676": "dark-blue",
+        "Total size of traps received in the last 2h for Server IP : 10.32.2.33:7676": "light-blue",
+        "Total size of traps received in the last 5m": "light-blue"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 78
+      },
+      "id": 14,
+      "interval": "$interval",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum_over_time(affirmed_com_AcuitasFaultStats_TrapSizeReceived{job=\"$job_name\"}[$interval])",
+          "legendFormat": "Total size of traps received in the last $interval for Server : {{job}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Trap Size",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 20,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "emsdev_tanay",
+          "value": "emsdev_tanay"
+        },
+        "datasource": "prom",
+        "definition": "label_values(current_active_connections,job)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "EMS",
+        "multi": false,
+        "name": "job_name",
+        "options": [
+          {
+            "selected": true,
+            "text": "emsdev_tanay",
+            "value": "emsdev_tanay"
+          },
+          {
+            "selected": false,
+            "text": "dhyan_dev",
+            "value": "dhyan_dev"
+          },
+          {
+            "selected": false,
+            "text": "emsqaha",
+            "value": "emsqaha"
+          }
+        ],
+        "query": "label_values(current_active_connections,job)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "10.1.1.185",
+          "value": "10.1.1.185"
+        },
+        "datasource": "prom",
+        "definition": "label_values(current_active_connections{job=\"$job_name\"},instance)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Server IP",
+        "multi": false,
+        "name": "ip",
+        "options": [
+          {
+            "selected": true,
+            "text": "10.1.1.185",
+            "value": "10.1.1.185"
+          }
+        ],
+        "query": "label_values(current_active_connections{job=\"$job_name\"},instance)",
+        "refresh": 0,
+        "regex": "/([^:]*)/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "mme-acton",
+          "value": "mme-acton"
+        },
+        "datasource": "prom",
+        "definition": "label_values(current_managed_devices{instance=~\"$ip:.*\"},resourcename)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Device Name",
+        "multi": false,
+        "name": "resource_name",
+        "options": [
+          {
+            "selected": false,
+            "text": "EMS Server",
+            "value": "EMS Server"
+          },
+          {
+            "selected": false,
+            "text": "SSF143",
+            "value": "SSF143"
+          },
+          {
+            "selected": true,
+            "text": "mme-acton",
+            "value": "mme-acton"
+          },
+          {
+            "selected": false,
+            "text": "Cluster19",
+            "value": "Cluster19"
+          },
+          {
+            "selected": false,
+            "text": "10.33.0.225",
+            "value": "10.33.0.225"
+          },
+          {
+            "selected": false,
+            "text": "Cluster195",
+            "value": "Cluster195"
+          },
+          {
+            "selected": false,
+            "text": "PMSimulatorMCC0",
+            "value": "PMSimulatorMCC0"
+          }
+        ],
+        "query": "label_values(current_managed_devices{instance=~\"$ip:.*\"},resourcename)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "10.32.15.139",
+          "value": "10.32.15.139"
+        },
+        "datasource": "prom",
+        "definition": "label_values(current_managed_devices{instance=~\"$ip:.*\",resourcename=\"$resource_name\"},ipaddress)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "",
+        "multi": false,
+        "name": "resource_ip",
+        "options": [
+          {
+            "selected": true,
+            "text": "10.32.15.139",
+            "value": "10.32.15.139"
+          }
+        ],
+        "query": "label_values(current_managed_devices{instance=~\"$ip:.*\",resourcename=\"$resource_name\"},ipaddress)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "auto": true,
+        "auto_count": 100,
+        "auto_min": "30s",
+        "current": {
+          "text": "auto",
+          "value": "$__auto_interval_interval"
+        },
+        "hide": 2,
+        "label": null,
+        "name": "interval",
+        "options": [
+          {
+            "selected": true,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": false,
+            "text": "0s",
+            "value": "0s"
+          }
+        ],
+        "query": "0s",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Tests",
+  "uid": "tOGK9TDMk",
+  "version": 57
+}
