@@ -29,7 +29,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1602341274042,
+  "iteration": 1602342105753,
   "links": [],
   "panels": [
     {
@@ -1358,8 +1358,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "mme-acton",
-          "value": "mme-acton"
+          "tags": [],
+          "text": "Cluster19",
+          "value": "Cluster19"
         },
         "datasource": "prom",
         "definition": "label_values(current_managed_devices{instance=~\"$ip:.*\"},resourcename)",
@@ -1380,12 +1381,12 @@
             "value": "SSF143"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "mme-acton",
             "value": "mme-acton"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "Cluster19",
             "value": "Cluster19"
           },
@@ -1419,8 +1420,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.32.15.139",
-          "value": "10.32.15.139"
+          "text": "10.32.7.19",
+          "value": "10.32.7.19"
         },
         "datasource": "prom",
         "definition": "label_values(current_managed_devices{instance=~\"$ip:.*\",resourcename=\"$resource_name\"},ipaddress)",
@@ -1432,8 +1433,8 @@
         "options": [
           {
             "selected": true,
-            "text": "10.32.15.139",
-            "value": "10.32.15.139"
+            "text": "10.32.7.19",
+            "value": "10.32.7.19"
           }
         ],
         "query": "label_values(current_managed_devices{instance=~\"$ip:.*\",resourcename=\"$resource_name\"},ipaddress)",
@@ -1478,7 +1479,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -1498,5 +1499,5 @@
   "timezone": "",
   "title": "Tests",
   "uid": "tOGK9TDMk",
-  "version": 57
+  "version": 1
 }
